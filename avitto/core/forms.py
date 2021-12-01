@@ -10,7 +10,7 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['post_name', 'description',
-                  'image', 'price', 'category', ]
+                  'image', 'price', 'category', 'draft']
         widgets = {
             'post_name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Продам что-нибудь'}),
             'description': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Подробнее, о том что продаю'}),
