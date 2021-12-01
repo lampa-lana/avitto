@@ -2,7 +2,7 @@
 <title>{{page_title}}</title>
 {% endblock title %}
 <p>{%block content %} 
-  <!-- {% if post.author == user %} -->
+  {% if post.author == user %}
   <form method="POST"  enctype="multipart/form-data" class="post-form_update">
     {% csrf_token %}
      {% for field in form %}
@@ -11,7 +11,7 @@
       {% endfor %}
     <button type="submit" class="button">обновить объявление</button>
   </form>
-  <!-- {% else %}
+ {% else %}
   <h2>Вы не можете редактировать это объявление!!</h2>
-  {% endif %}      -->
+  {% endif %}
 {% endblock content%}</p>
