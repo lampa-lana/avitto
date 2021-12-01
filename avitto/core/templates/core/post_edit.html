@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block title %}
+<title>{{page_title}}</title>
+{% endblock title %}
+<p>{%block content %} 
+  <!-- {% if post.author == user %} -->
+  <form method="POST"  enctype="multipart/form-data" class="post-form_update">
+    {% csrf_token %}
+     {% for field in form %}
+      <p>{{ field.label }}</p>
+      <p>{{ field }}</p>
+      {% endfor %}
+    <button type="submit" class="button">обновить объявление</button>
+  </form>
+  <!-- {% else %}
+  <h2>Вы не можете редактировать это объявление!!</h2>
+  {% endif %}      -->
+{% endblock content%}</p>

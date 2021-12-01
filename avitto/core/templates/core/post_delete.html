@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block title %}
+<title>{{page_title}}</title>
+{% endblock title %}
+<p>{%block content %}
+{% if post.author == user %}
+  <form method="POST">
+  {% csrf_token %}
+  <button type="submit" class="button">Удалить объявление</button>
+  </form>
+   <a href="{% url 'core:post_detail' post.id %}"> Просмотр объявления</a>
+   {% else %}
+   <h2>Вы не можете удалить объявление!!</h2>
+   <a href="{% url 'core:post_detail' post.id %}"> Просмотр объявления</a>
+   <hr />
+   <a href="{% url 'core:index' %}"> На главную</a>
+{% endif %}
+{% endblock content %}</p>

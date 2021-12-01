@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial{-scale=1.0" />
+
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    />
+    {% block title %} {% endblock title %}
+  </head>
+  <body>
+    <header class="header">
+      <a href="{% url 'core:index' %}" class="logo">
+        <img src="{% static 'core/images/logo.svg' %}" alt="logo" />
+      </a>
+      <ul class="header_link-cat">
+        <li>
+          <a href="{% url 'core:category_detail' 3 %}">Для дома и дачи</a>
+        </li>
+        <li><a href="{% url 'core:category_detail' 2 %}">Недвижимость</a></li>
+        <li><a href="{% url 'core:category_detail' 1 %}">Транспорт</a></li>
+        <li><a href="{% url 'core:category_detail' 4 %}">Электроника</a></li>
+      </ul>
+      <ul class="header_link">
+        <li>
+          <a href="{% url 'core:login' %}"
+            ><i class="fas fa-user"></i>Личный кабинет</a
+          >
+        </li>
+        <li><a href="tel:+380985554433">тех.помощь</a></li>
+      </ul>
+    </header>
+    <main>
+      <aside>
+        <h3 class="aside-title">Навигация по сайту</h3>
+        <ul>
+          <li>
+            <a href="{% url 'core:index' %}"
+              ><i class="fas fa-home"></i>Главная страница</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'core:category_all' %}"
+              ><i class="fas fa-campground"></i>Категории</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'core:all_posts' %}"
+              ><i class="fas fa-mail-bulk"></i>Все объявления</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'core:post_create' %}"
+              ><i class="fas fa-folder-plus"></i>Создать объявление</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'core:all_profile' %}"
+              ><i class="fas fa-users"></i>Профили</a
+            >
+          </li>
+          <li>
+            <a href="{% url 'core:sighup' %}"
+              ><i class="fas fa-user-plus"></i>Создать профиль</a
+            >
+          </li>
+        </ul>
+      </aside>
+      <section class="content">
+        {% block content %} {% endblock content %}
+      </section>
+    </main>
+    <footer class="footer"></footer>
+  </body>
+</html>

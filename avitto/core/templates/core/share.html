@@ -1,0 +1,26 @@
+{% extends 'base.html' %} 
+{% block title %}
+<title>поделиться объявлением</title>
+{% endblock title %}
+<p>{%block content %}
+  <header>
+      <h1>поделиться объявлением</h1>
+    </header>
+    <!-- /Header -->
+    <section>
+      {% if sent %}
+      <h2>E-mail успешно отправлен </h2>
+      <p>{{post.post_name}} Был успешно отправлен {{form.cleaned_data.to}}</p>
+      {% else %}
+      <h2>Отправить объявление {{post.post_name}} на e-mail</h2>
+      <form method='post' action='.'>
+      
+        {% csrf_token %} 
+         <p>{{ field.errors }}</p>
+         <p>{{ form.as_p }}</p>
+         <button type="submit" class="button">Отправить объявление</button>
+        </form>
+          
+        {% endif %}
+    </section>     
+{% endblock content%}</p>

@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block title %}
+<title>{{page_title}}</title>
+{% endblock title %}
+<p>{%block content %} 
+  <section>
+      <h2>Регистация</h2>
+      {% if not registered %}
+      <form method="post">
+        {% csrf_token %}
+        {{form}}
+        <button class="button">Регистация</button>
+      </form>    
+      {% else %}
+      <h3>Вы успешно зарегистрировались</h3>
+       <a href="{% url 'core:login' %}" class="button">Войти</a>
+      {% endif %}     
+  </section> 
+{% endblock content%}</p>
+

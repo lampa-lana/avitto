@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% load my_filters %}
+{% block title %}
+<title>{{page_title}}</title>
+{% endblock title %}
+<p>{%block content %}
+  <header>
+      <h1>Все объявления</h1>
+    </header>
+    <!-- /Header -->
+    <section>
+      {% if posts %}
+        <ul class="posts_list">
+          {% for post in posts %}
+           <li>
+            <a href="{% url 'core:post_detail' post.id %}" class="image_card">
+               <p> {{ post.post_name }}</p>
+               <img src="{{ post.image_url }}" alt="{{ post.post_name}}" />
+               
+               <p>Стоимость: {{ post.price|currency}} рублей</p>
+               <p>Категория объявления: {{post.category}}</p>
+            </a>            
+           </li>               
+          {% endfor %}
+        </ul>
+        {% endif %}
+    </section>
+  {% include "pagination.html" with page=posts %}       
+{% endblock content%}</p>

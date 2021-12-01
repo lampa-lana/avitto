@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block title %}
+<title>{{page_title}}</title>
+{% endblock title %}
+<p>{%block content %}
+{% if user.is_authenticated %}
+    <form method="POST" enctype="multipart/form-data" class="post-form">
+      {% csrf_token %}
+       
+     
+   {% for field in form %}
+      <p>{{ field.label }}</p>
+      <p>{{ field }}</p>
+      {% endfor %}
+<!-- -->
+<!--    {{ formset.management_form }}-->
+<!--    {% for form in formset %}-->
+<!--        {{ form.as_p }}-->
+<!--    {% endfor %}-->
+       <button type="submit" class="button">Разместить объявление</button>
+    </form>
+{% else %}
+    <h3> Чтобы создавать объявления, вам нужно </h3>
+    <a href="{% url 'core:login' %}" class="button"> ВОЙТИ </a> 
+    <hr>
+    <h3>или</h3>
+    <a href="{% url 'core:sighup' %}" class="button"> зарегистрироваться </a>
+{% endif %}    
+{% endblock content%}</p>

@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block title %}
+<title>{{page_title}}</title>
+{% endblock title %}
+<p>{%block content %} 
+  <section>
+    <h1>Профиль: {{ profile.user.username }} </h1>
+    <hr />
+    <h2> Обо мне: </h2>
+    <p>{{ profile.about }}</p>
+    {% if profile.foto %}
+    <img src="{{ profile.foto.url }}" alt="photo" class="profile_img">
+    {% else %}
+       <p></p>
+    {% endif %}   
+    <p> Мой день рождения: {{ profile.birth_date }} </p>   
+    {% if user.id == profile.user.id %}   
+    <a href="{% url 'core:edit_profile' user_id=profile.user.id %}" class="button"> Редактировать профиль </a>
+    {% else %}
+    <h2> Вы не можете редактировать не свой профиль </h2>
+    {% endif %}
+    
+  </section> 
+{% endblock content%}</p>

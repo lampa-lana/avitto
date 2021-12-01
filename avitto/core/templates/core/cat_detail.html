@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% load my_filters %}{% block title %}
+<title>{{page_title}}</title>
+{% endblock title %}
+<p>{%block content %}
+  
+  <section class="category_det-main">
+    <article class="category_posts">{% if categories %}
+        <ul class="category_mainpage">
+          {% for category in categories %}
+          <li>
+            <a href="{% url 'core:category_detail' category.id %}"
+              >{{ category.category_name|linebreaks }}</a
+            >
+          </li>
+          {% endfor %}         
+        </ul>
+      {% endif %}
+    </article>    
+    <article class="posts">
+        <h2>Самые последние из размещенных объявлений из категории: </h2>
+        <p><a href="{% url 'core:category_detail' category.id %}"
+              >{{ category.category_name }}</a
+            ></p>
+        <p><a href="{% url 'core:category_detail' category.id %}"
+              >{{ category.description }}</a
+            >    </p>
+        
+         {% if posts %}
+        <ul class="posts_list">
+          {% for post in posts %}
+           <li>
+            <a href="{% url 'core:post_detail' post.id %}" class="image_card">
+               <p> {{ post.post_name }}</p>
+               <img src="{{ post.image_url }}" alt="{{ post.post_name}}" />
+               <p>Дата последнего изменения: {{ post.date_edit }}</p>
+               <p>Стоимость: {{ post.price|currency }} рублей</p>
+               <p>Категория объявления: {{post.category}}</p>
+            </a>            
+           </li>               
+          {% endfor %}
+        </ul>
+        {% endif %}
+    </article>
+  </section>
+   
+{% endblock content%}</p>

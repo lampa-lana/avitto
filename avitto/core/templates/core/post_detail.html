@@ -1,0 +1,70 @@
+{% extends 'base.html' %}{% load my_filters %} {% block title %}
+<title>{{page_title}}</title>
+{% endblock title %}
+<p>{%block content %} 
+  <h1>Подробнее об оъявлении:</h1>
+  <section>
+    <ul>
+      {% for category in categories %}
+          <li>
+            <a href="{% url 'core:category_detail' category.id %}"
+              >{{ category.category_name }}</a
+            >
+          </li>
+          <li>{{ category.description }}</li>
+          <hr />
+          {% endfor %}
+    </ul>
+  </section>
+  <section>
+    <h2>{{ post.post_name }}</h2>
+    <h2>Категория объявления: {{ post.category }}</h2>
+    <ul class="post_card-detail image_card">      
+      <li><p> {{ post.description|linebreaks }}</p>
+      <img src="{{ post.image_url }}" alt="{{ post.post_name}}" />      
+      <p>Дата публикации: {{ post.date_pub }}</p>
+      <p>Дата последнего изменения: {{ post.date_edit }}</p>
+      <p>Объявление изменялось {{ post.date_edit|timesince }} назад</p>
+      <p>Стоимость: {{ post.price|currency}} рублей</p>     
+       <a href="{% url 'core:profile' post.author.id %}">Продавец: {{post.author.username}} </a>
+            </a>
+<!--     {% if images %}-->
+<!--     {% for img in images %}-->
+<!--     <p>{{ img }} <img src="{{ images.image_url  }}" alt="{{ img }}" /></p>-->
+<!--     {% endfor %}-->
+<!--     {% endif %}-->
+   
+      
+          </li>        
+    </ul> 
+    
+    
+       <div >
+            <h2> Комментарии </h2> 
+            {% if comments.all %}
+            {% for comment in comments.all %}
+            <hr>
+                <h3> <b> {{ comment.user.username }} </b> : {{comment.content}} </h3>
+                <p> {{comment.timestamp|date:"d F G:i" }} </p>
+            {% endfor %}
+            {% else %}
+                <h3 class='msg'> Комментариев нет. Вы можете стать первым. </h3>
+            {% endif %}
+            <hr>
+            {% if comment_form %}
+                <form method='post'>
+                    <p> Комментарий: 
+                    {% csrf_token %} {{comment_form.content}} </p>
+                <button type='submit' class='button'> Отправить </button>
+                </form>
+            {% else %}
+                <p style='color:red;'> Комментарии только для зарегистрированных пользователей </p>
+            {% endif %}
+        </div>
+
+    <a href="{% url 'core:post_edit' post.id%}">редактировать объявление</a>
+    <hr />
+    <a href="{% url 'core:post_delete' post.id%}">удалить объявление</a>
+    <a href="{% url 'core:post_share' post_id=post.id %}">поделиться объявлением</a>
+  </section>
+{% endblock content%}</p>
