@@ -5,6 +5,6 @@ http://lampalana250.pythonanywhere.com/
 
 ![Иллюстрация к проекту](https://github.com/lampa-lana/avitto/blob/88c4928edbbef0a13de6c055528d45b6f5a7e296/screen_avitto.png)
 
-![Сертификат DL Academy](https://github.com/lampa-lana/avitto/blob/4ae2e8d6f01ae9dce7535c15977920e217596c9b/sertificatdl.png)
-![Сертификат GLO Academy](https://github.com/lampa-lana/avitto/blob/cc8da5fcb1659ece90f77ec078ae18d365510580/sertifikatglo.png)
+![Сертификат DL Academy](https://github.com/lampa-lana/avitto/blob/ce3886799a6989d2b87e02de793a2184e0156975/certificatedl.png)
+![Сертификат GLO Academy](https://github.com/lampa-lana/avitto/blob/ce3886799a6989d2b87e02de793a2184e0156975/certificateglo.png)
 
